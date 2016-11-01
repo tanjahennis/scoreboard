@@ -2,6 +2,7 @@
 import React from 'react'
 import Title from './components/Title'
 import Scoreboard from './containers/Scoreboard'
+import CreatePlayer from './components/CreatePlayer'
 import './App.sass'
 
 const playerData = [
@@ -51,6 +52,21 @@ class App extends React.Component {
     })
   }
 
+  createPlayer(newPlayer) {
+    const { players } = this.state
+    const newPlayerId = players.map((player) => {
+      return player.playerId + 1
+    }).sort().reverse()[0]
+
+    console.log(newPlayerId)
+
+    this.setState({
+      players: this.sortPlayers(players.concat(
+        Object.assign({}, newPlayer, { playerId: newPlayerId })
+      ))
+    })
+  }
+
   sortPlayers(players) {
     return players.concat().sort((a, b) => {
       return b.points - a.points
@@ -64,6 +80,7 @@ class App extends React.Component {
       <div className="app">
         <Title label="Scoreboard" />
         <Scoreboard players={ players } plusOne={ this.plusOne.bind(this) } />
+        <CreatePlayer onSubmit={ this.createPlayer.bind(this) } />
       </div>
     )
   }
