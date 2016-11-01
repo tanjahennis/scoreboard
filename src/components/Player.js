@@ -8,6 +8,11 @@ class Player extends Component {
     onChange(playerId)
   }
 
+  deleteMe() {
+    const { playerId, onDelete } = this.props
+    onDelete(playerId)
+  }
+
   render() {
     const { name, avatar, points, rank } = this.props
 
@@ -23,6 +28,7 @@ class Player extends Component {
           <span className="name">{ name }</span>
         </div>
         <button onClick={ this.plusOne.bind(this) }>+1</button>
+        <button className="delete" onClick={ this.deleteMe.bind(this) }>x</button>
       </li>
     )
   }

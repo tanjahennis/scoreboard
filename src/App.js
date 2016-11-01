@@ -65,6 +65,14 @@ class App extends React.Component {
     })
   }
 
+  deletePlayer(playerId) {
+    this.setState({
+      players: this.state.players.filter((player) => {
+        return player.playerId !== playerId
+      })
+    })
+  }
+
   sortPlayers(players) {
     return players.concat().sort((a, b) => {
       return b.points - a.points
@@ -77,7 +85,7 @@ class App extends React.Component {
     return (
       <div className="app">
         <Title label="Scoreboard" />
-        <Scoreboard players={ players } plusOne={ this.plusOne.bind(this) } />
+        <Scoreboard players={ players } plusOne={ this.plusOne.bind(this) } deletePlayer={ this.deletePlayer.bind(this) } />
         <CreatePlayer onSubmit={ this.createPlayer.bind(this) } />
       </div>
     )
