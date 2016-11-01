@@ -58,8 +58,6 @@ class App extends React.Component {
       return player.playerId + 1
     }).sort().reverse()[0]
 
-    console.log(newPlayerId)
-
     this.setState({
       players: this.sortPlayers(players.concat(
         Object.assign({}, newPlayer, { playerId: newPlayerId })
