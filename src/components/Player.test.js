@@ -2,18 +2,22 @@ import React from 'react'
 import { shallow } from 'enzyme'
 import chai, { expect } from 'chai'
 import chaiEnzyme from 'chai-enzyme'
+import spies from 'chai-spies'
 import Player from './Player'
 
+chai.use(spies)
 chai.use(chaiEnzyme())
 
 const playerProps = {
+  playerId: 99,
   name: 'Miriam',
   avatar: 'http://cd.sseu.re/miriam-3409830948.png',
   points: 6
 }
 
 describe('<Player />', () => {
-  const player = shallow(<Player { ...playerProps } />)
+  const onChangeSpy = chai.spy()
+  const player = shallow(<Player { ...playerProps } onChange={ onChangeSpy }/>)
 
   it('has a tag name li', () => {
     expect(player).to.have.tagName('li')
@@ -39,13 +43,9 @@ describe('<Player />', () => {
     })
 
     it('changes the score when we click it', () => {
-      const { points, name } = playerProps
-
-      expect(player.find('.score')).to.have.text('6')
-
+      const { playerId } = playerProps
       player.find('button').simulate('click')
-
-      expect(player.find('.score')).to.have.text('7')
+      expect(onChangeSpy).to.have.been.called.with(playerId)
     })
   })
 })
