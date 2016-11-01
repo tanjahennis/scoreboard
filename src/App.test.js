@@ -8,7 +8,7 @@ import Title from './components/Title'
 
 chai.use(chaiEnzyme())
 
-const app = shallow(<App />)
+const app = shallow(<App players={ [] } />)
 
 describe('<App />', () => {
   it('contains a div tag', () => {
