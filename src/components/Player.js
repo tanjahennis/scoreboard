@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import Trophy from './Trophy'
 import './Player.sass'
 
 class Player extends Component {
@@ -8,7 +9,7 @@ class Player extends Component {
   }
 
   render() {
-    const { name, avatar, points } = this.props
+    const { name, avatar, points, rank } = this.props
 
     return (
       <li className="player">
@@ -16,6 +17,7 @@ class Player extends Component {
           <img src={ avatar } />
         </div>
         <div className="label">
+          <Trophy points={ points } rank={ rank } />
           <span className="score">{ points }</span>
           .&nbsp;
           <span className="name">{ name }</span>
