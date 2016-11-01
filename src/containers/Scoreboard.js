@@ -5,7 +5,7 @@ import './Scoreboard.sass'
 
 class Scoreboard extends Component {
   renderPlayer(player, index) {
-    return <Player key={ index } { ...player } />
+    return <Player key={ index } { ...player } onChange={ this.props.plusOne } />
   }
 
   render() {
@@ -13,7 +13,7 @@ class Scoreboard extends Component {
 
     return (
       <ul className="scoreboard">
-        { players.map(this.renderPlayer) }
+        { players.map(this.renderPlayer.bind(this)) }
       </ul>
     )
   }
