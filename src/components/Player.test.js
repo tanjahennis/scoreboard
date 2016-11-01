@@ -29,7 +29,23 @@ describe('<Player />', () => {
 
   it('renders the points and name of the player', () => {
     const { points, name } = playerProps
-    expect(player.find('.points')).to.have.text(points)
+    expect(player.find('.score')).to.have.text(points)
     expect(player.find('.name')).to.have.text('Miriam')
+  })
+
+  describe('+1 Button', () => {
+    it('shows it', () => {
+      expect(player.find('button')).to.have.text('+1')
+    })
+
+    it('changes the score when we click it', () => {
+      const { points, name } = playerProps
+
+      expect(player.find('.score')).to.have.text('6')
+
+      player.find('button').simulate('click')
+
+      expect(player.find('.score')).to.have.text('7')
+    })
   })
 })
