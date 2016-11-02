@@ -1,4 +1,5 @@
 import { ADD_PLAYER } from '../actions/add-player'
+import { DELETE_PLAYER } from '../actions/delete-player'
 
 export default (state = [], { type, payload } = {}) => {
   switch (type) {
@@ -10,6 +11,12 @@ export default (state = [], { type, payload } = {}) => {
         points: 0
       }
       return state.concat([ newPlayer ])
+
+    case DELETE_PLAYER :
+      return state.filter((player) => {
+        return player.playerId != payload
+      })
+
     default:
       return state
   }

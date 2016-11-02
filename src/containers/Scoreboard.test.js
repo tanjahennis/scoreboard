@@ -1,7 +1,7 @@
 // src/containers/Scoreboard.test.js
 
 import React from 'react'
-import { shallow } from 'enzyme'
+import wrapper from '../../test/wrapper'
 import chai, { expect } from 'chai'
 import chaiEnzyme from 'chai-enzyme'
 import { Scoreboard } from './Scoreboard'
@@ -25,7 +25,7 @@ const players = [
 ]
 
 describe('<Scoreboard />', () => {
-  const scoreboard = shallow(<Scoreboard players={ players } />)
+  const scoreboard = wrapper(<Scoreboard players={ players } />)
 
   it('has a ul tag', () => {
     expect(scoreboard).to.have.tagName('ul')

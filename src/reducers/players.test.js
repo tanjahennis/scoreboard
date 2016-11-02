@@ -6,6 +6,7 @@ import players from './players'
 import { nextPlayerId } from './players'
 
 import { ADD_PLAYER } from '../actions/add-player'
+import { DELETE_PLAYER } from '../actions/delete-player'
 
 describe('players', () => {
   describe('initial state', () => {
@@ -38,6 +39,28 @@ describe('players', () => {
     ]
 
     it('adds a player', () => {
+      expect(players(initialState, action)).to.eql(finalState)
+    })
+  })
+
+  describe(DELETE_PLAYER, () => {
+    const initialState = deepFreeze([
+      { playerId: 3 },
+      { playerId: 9 },
+      { playerId: 1 },
+    ])
+
+    const action = deepFreeze({
+      type: DELETE_PLAYER,
+      payload: 9
+    })
+
+    const finalState = [
+      { playerId: 3 },
+      { playerId: 1 },
+    ]
+
+    it('deletes the player', () => {
       expect(players(initialState, action)).to.eql(finalState)
     })
   })

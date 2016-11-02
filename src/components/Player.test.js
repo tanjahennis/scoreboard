@@ -3,7 +3,7 @@ import { shallow } from 'enzyme'
 import chai, { expect } from 'chai'
 import chaiEnzyme from 'chai-enzyme'
 import spies from 'chai-spies'
-import Player from './Player'
+import { Player } from './Player'
 
 chai.use(spies)
 chai.use(chaiEnzyme())

@@ -9,7 +9,8 @@ export class Scoreboard extends Component {
     return (
       <Player
         key={ index }
-        rank={ index } { ...player } />
+        rank={ index }
+        { ...player } />
     )
   }
 
