@@ -39,12 +39,12 @@ describe('<Player />', () => {
 
   describe('+1 Button', () => {
     it('shows it', () => {
-      expect(player.find('button')).to.have.text('+1')
+      expect(player.find('.plus-one')).to.have.text('+1')
     })
 
     it('changes the score when we click it', () => {
       const { playerId } = playerProps
-      player.find('button').simulate('click')
+      player.find('.plus-one').simulate('click')
       expect(onChangeSpy).to.have.been.called.with(playerId)
     })
   })

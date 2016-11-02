@@ -27,7 +27,7 @@ class Player extends Component {
           .&nbsp;
           <span className="name">{ name }</span>
         </div>
-        <button onClick={ this.plusOne.bind(this) }>+1</button>
+        <button className="plus-one" onClick={ this.plusOne.bind(this) }>+1</button>
         <button className="delete" onClick={ this.deleteMe.bind(this) }>x</button>
       </li>
     )
