@@ -1,9 +1,10 @@
 // src/containers/Scoreboard.js
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
 import Player from '../components/Player'
 import './Scoreboard.sass'
 
-class Scoreboard extends Component {
+export class Scoreboard extends Component {
   renderPlayer(player, index) {
     return (
       <Player
@@ -25,4 +26,10 @@ class Scoreboard extends Component {
   }
 }
 
-export default Scoreboard
+const mapStateToProps = (state) => {
+  return {
+    players: state.players,
+  }
+}
+
+export default connect(mapStateToProps, {})(Scoreboard)

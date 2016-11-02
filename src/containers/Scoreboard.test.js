@@ -4,7 +4,7 @@ import React from 'react'
 import { shallow } from 'enzyme'
 import chai, { expect } from 'chai'
 import chaiEnzyme from 'chai-enzyme'
-import Scoreboard from './Scoreboard'
+import { Scoreboard } from './Scoreboard'
 import Player from '../components/Player'
 
 chai.use(chaiEnzyme())
