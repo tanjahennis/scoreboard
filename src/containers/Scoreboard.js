@@ -9,9 +9,7 @@ export class Scoreboard extends Component {
     return (
       <Player
         key={ index }
-        rank={ index } { ...player }
-        onChange={ this.props.plusOne }
-        onDelete={ this.props.deletePlayer }/>
+        rank={ index } { ...player } />
     )
   }
 

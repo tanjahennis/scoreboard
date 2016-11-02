@@ -2,9 +2,9 @@
 
 export const ADD_PLAYER = 'ADD_PLAYER'
 
-export default (newPlayer) => {
+export default (name) => {
   return {
     type: ADD_PLAYER,
-    payload: newPlayer
+    payload: name
   }
 }

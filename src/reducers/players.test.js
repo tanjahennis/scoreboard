@@ -3,6 +3,7 @@
 import chai, { expect } from 'chai'
 import deepFreeze from 'deep-freeze-node'
 import players from './players'
+import { nextPlayerId } from './players'
 
 import { ADD_PLAYER } from '../actions/add-player'
 
@@ -16,22 +17,42 @@ describe('players', () => {
 
   describe(ADD_PLAYER, () => {
     const existingPlayer = {
+      playerId: 3,
       name: 'Jane',
       points: 4
     }
     const initialState = deepFreeze([ existingPlayer ])
-    const newPlayer = {
-      name: 'Bram',
-      points: 0
-    }
+    const newPlayerName = 'Bram'
     const action = deepFreeze({
       type: ADD_PLAYER,
-      payload: newPlayer
+      payload: newPlayerName
     })
-    const finalState = [ existingPlayer, newPlayer ]
+    const finalState = [
+      existingPlayer,
+      {
+        playerId: 4,
+        name: newPlayerName,
+        avatar: `https://api.adorable.io/avatars/285/${newPlayerName}.png`,
+        points: 0
+      }
+    ]
 
     it('adds a player', () => {
       expect(players(initialState, action)).to.eql(finalState)
     })
+  })
+})
+
+describe('nextPlayerId(players)', () => {
+  const existingPlayers = deepFreeze([
+    { playerId: 3 },
+    { playerId: 9 },
+    { playerId: 1 },
+  ])
+
+  const nextId = nextPlayerId(existingPlayers)
+
+  it('returns the next available player id', () => {
+    expect(nextId).to.eq(10)
   })
 })
