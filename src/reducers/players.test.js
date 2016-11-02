@@ -7,6 +7,7 @@ import { nextPlayerId, sortPlayers } from './players'
 
 import { ADD_PLAYER } from '../actions/add-player'
 import { DELETE_PLAYER } from '../actions/delete-player'
+import { PLUS_ONE } from '../actions/plus-one'
 
 describe('players', () => {
   describe('initial state', () => {
@@ -61,6 +62,29 @@ describe('players', () => {
     ]
 
     it('deletes the player', () => {
+      expect(players(initialState, action)).to.eql(finalState)
+    })
+  })
+
+  describe(PLUS_ONE, () => {
+    const initialState = deepFreeze([
+      { playerId: 3, points: 0 },
+      { playerId: 9, points: 0 },
+      { playerId: 1, points: 0 },
+    ])
+
+    const action = deepFreeze({
+      type: PLUS_ONE,
+      payload: 9
+    })
+
+    const finalState = [
+      { playerId: 9, points: 1 },
+      { playerId: 3, points: 0 },
+      { playerId: 1, points: 0 },
+    ]
+
+    it('gives the player an extra point', () => {
       expect(players(initialState, action)).to.eql(finalState)
     })
   })

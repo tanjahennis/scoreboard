@@ -16,8 +16,8 @@ const playerProps = {
 }
 
 describe('<Player />', () => {
-  const onChangeSpy = chai.spy()
-  const player = shallow(<Player { ...playerProps } onChange={ onChangeSpy }/>)
+  const plusOne = chai.spy()
+  const player = shallow(<Player { ...playerProps } plusOne={ plusOne }/>)
 
   it('has a tag name li', () => {
     expect(player).to.have.tagName('li')
@@ -45,7 +45,7 @@ describe('<Player />', () => {
     it('changes the score when we click it', () => {
       const { playerId } = playerProps
       player.find('.plus-one').simulate('click')
-      expect(onChangeSpy).to.have.been.called.with(playerId)
+      expect(plusOne).to.have.been.called.with(playerId)
     })
   })
 })

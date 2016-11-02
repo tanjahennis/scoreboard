@@ -1,8 +1,18 @@
 import { ADD_PLAYER } from '../actions/add-player'
 import { DELETE_PLAYER } from '../actions/delete-player'
+import { PLUS_ONE } from '../actions/plus-one'
 
 export default (state = [], { type, payload } = {}) => {
   switch (type) {
+    case PLUS_ONE :
+      return sortPlayers(state.map((player) => {
+        if (player.playerId === payload) {
+          return Object.assign(
+            {}, player, { points: player.points + 1 })
+        }
+        return player
+      }))
+
     case ADD_PLAYER :
       const newPlayer = {
         playerId: nextPlayerId(state),

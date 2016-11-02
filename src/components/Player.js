@@ -1,13 +1,14 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import plusOne from '../actions/plus-one'
 import deletePlayer from '../actions/delete-player'
 import Trophy from './Trophy'
 import './Player.sass'
 
 export class Player extends Component {
   plusOne() {
-    const { playerId, onChange } = this.props
-    onChange(playerId)
+    const { playerId, plusOne } = this.props
+    plusOne(playerId)
   }
 
   deleteMe() {
@@ -36,4 +37,4 @@ export class Player extends Component {
   }
 }
 
-export default connect(null, { deletePlayer })(Player)
+export default connect(null, { deletePlayer, plusOne })(Player)
