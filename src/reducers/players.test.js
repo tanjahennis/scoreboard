@@ -3,7 +3,7 @@
 import chai, { expect } from 'chai'
 import deepFreeze from 'deep-freeze-node'
 import players from './players'
-import { nextPlayerId } from './players'
+import { nextPlayerId, sortPlayers } from './players'
 
 import { ADD_PLAYER } from '../actions/add-player'
 import { DELETE_PLAYER } from '../actions/delete-player'
@@ -77,5 +77,25 @@ describe('nextPlayerId(players)', () => {
 
   it('returns the next available player id', () => {
     expect(nextId).to.eq(10)
+  })
+})
+
+describe('sortPlayers(players)', () => {
+  const initialPlayers = deepFreeze([
+    { points: 3 },
+    { points: 9 },
+    { points: 1 },
+  ])
+
+  const result = sortPlayers(initialPlayers)
+
+  const sortedPlayers = [
+    { points: 9 },
+    { points: 3 },
+    { points: 1 },
+  ]
+
+  it('returns players sorted by their points, desc', () => {
+    expect(result).to.eql(sortedPlayers)
   })
 })
