@@ -4,13 +4,13 @@ import { mount } from 'enzyme'
 import chai, { expect } from 'chai'
 import chaiEnzyme from 'chai-enzyme'
 import spies from 'chai-spies'
-import CreatePlayer from './CreatePlayer'
+import { CreatePlayer } from './CreatePlayer'
 
 chai.use(spies)
 chai.use(chaiEnzyme())
 
-const saveSpy = chai.spy()
-const form = mount(<CreatePlayer onSubmit={ saveSpy }/>)
+const addPlayer = chai.spy()
+const form = mount(<CreatePlayer addPlayer={ addPlayer }/>)
 
 describe('<CreatePlayer />', () => {
   it('has a wrapping form tag', () => {
@@ -36,7 +36,7 @@ describe('<CreatePlayer />', () => {
 
     it('calls the save function when we submit it', () => {
       form.simulate('submit')
-      expect(saveSpy).to.have.been.called()
+      expect(addPlayer).to.have.been.called()
     })
   })
 })
