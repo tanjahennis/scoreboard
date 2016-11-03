@@ -6,6 +6,7 @@ class PlayerProfile extends Component {
     return (
       <div>
         <Title label="Player Profile" />
+        <p>{ this.props.routeParams.playerId }</p>
       </div>
     )
   }
