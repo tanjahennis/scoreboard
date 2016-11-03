@@ -33,7 +33,7 @@ const mapStateToProps = (state) => {
   return {
     player: state.players.reduce((prev, next) => {
         return (next.playerId === state.playerProfileId) ?
-          next : null
+          next : prev
       }, null)
   }
 }
