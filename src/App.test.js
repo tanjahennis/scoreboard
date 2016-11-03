@@ -4,8 +4,6 @@ import wrapper from '../test/wrapper'
 import chai, { expect } from 'chai'
 import chaiEnzyme from 'chai-enzyme'
 import App from './App'
-import Title from './components/Title'
-import Scoreboard from './containers/Scoreboard'
 
 chai.use(chaiEnzyme())
 
@@ -18,13 +16,5 @@ describe('<App />', () => {
 
   it('has the class name "app"', () => {
     expect(app).to.have.className('app')
-  })
-
-  it('renders the Title', () => {
-    expect(app).to.have.descendants(Title)
-  })
-
-  it('renders the Scoreboard', () => {
-    expect(app).to.have.descendants(Scoreboard)
   })
 })

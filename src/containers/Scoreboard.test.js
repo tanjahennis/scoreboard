@@ -6,6 +6,7 @@ import chai, { expect } from 'chai'
 import chaiEnzyme from 'chai-enzyme'
 import { Scoreboard } from './Scoreboard'
 import Player from '../components/Player'
+import Title from '../components/Title'
 
 chai.use(chaiEnzyme())
 
@@ -27,12 +28,16 @@ const players = [
 describe('<Scoreboard />', () => {
   const scoreboard = wrapper(<Scoreboard players={ players } />)
 
-  it('has a ul tag', () => {
-    expect(scoreboard).to.have.tagName('ul')
+  it('is wrapped in a div tag', () => {
+    expect(scoreboard).to.have.tagName('div')
   })
 
   it('has a class name "scoreboard"', () => {
     expect(scoreboard).to.have.className('scoreboard')
+  })
+
+  it('renders the Title', () => {
+    expect(scoreboard).to.have.descendants(Title)
   })
 
   it('renders the players', () => {
