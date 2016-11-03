@@ -1,5 +1,5 @@
 import React from 'react'
-import { shallow } from 'enzyme'
+import { shallow, mount } from 'enzyme'
 import chai, { expect } from 'chai'
 import chaiEnzyme from 'chai-enzyme'
 import spies from 'chai-spies'
@@ -31,9 +31,9 @@ describe('<Player />', () => {
     expect(player.find('.avatar img')).to.have.attr('src', playerProps.avatar)
   })
 
-  it('renders the points and name of the player', () => {
-    const { points, name } = playerProps
-    expect(player.find('.score')).to.have.text(points)
+  it('renders the name of the player', () => {
+    const player = mount(<Player { ...playerProps } plusOne={ plusOne }/>)
+    const { name } = playerProps
     expect(player.find('.name')).to.have.text('Miriam')
   })
 

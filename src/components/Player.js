@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import { Link } from 'react-router'
 import plusOne from '../actions/plus-one'
 import deletePlayer from '../actions/delete-player'
 import Trophy from './Trophy'
@@ -17,7 +18,7 @@ export class Player extends Component {
   }
 
   render() {
-    const { name, avatar, points, rank } = this.props
+    const { playerId, name, avatar, points, rank } = this.props
 
     return (
       <li className="player">
@@ -28,7 +29,7 @@ export class Player extends Component {
           <Trophy points={ points } rank={ rank } />
           <span className="score">{ points }</span>
           .&nbsp;
-          <span className="name">{ name }</span>
+          <Link className="name" to={ `/players/${playerId}` }>{ name }</Link>
         </div>
         <button className="plus-one" onClick={ this.plusOne.bind(this) }>+1</button>
         <button className="delete" onClick={ this.deleteMe.bind(this) }>x</button>

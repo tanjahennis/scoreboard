@@ -19,7 +19,7 @@ describe('playerProfileId', () => {
 
     const action = deepFreeze({
       type: SELECT_PLAYER,
-      payload: 3
+      payload: '3'
     })
 
     const finalState = 3
