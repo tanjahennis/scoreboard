@@ -18,13 +18,7 @@ export default (state = [], { type, payload } = {}) => {
       }))
 
     case ADD_PLAYER :
-      const newPlayer = {
-        playerId: nextPlayerId(state),
-        name: payload,
-        avatar: `https://api.adorable.io/avatars/285/${payload}.png`,
-        points: 0
-      }
-      return sortPlayers(state.concat([ newPlayer ]))
+      return sortPlayers(state.concat([ payload ]))
 
     case DELETE_PLAYER :
       return sortPlayers(state.filter((player) => {

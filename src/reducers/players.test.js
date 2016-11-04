@@ -24,19 +24,20 @@ describe('players', () => {
       points: 4
     }
     const initialState = deepFreeze([ existingPlayer ])
-    const newPlayerName = 'Bram'
+    const newPlayer = {
+      playerId: 4,
+      name: 'Bram',
+      avatar: 'https://api.adorable.io/avatars/285/bram.png',
+      points: 0
+    }
+
     const action = deepFreeze({
       type: ADD_PLAYER,
-      payload: newPlayerName
+      payload: newPlayer
     })
     const finalState = [
       existingPlayer,
-      {
-        playerId: 4,
-        name: newPlayerName,
-        avatar: `https://api.adorable.io/avatars/285/${newPlayerName}.png`,
-        points: 0
-      }
+      newPlayer
     ]
 
     it('adds a player', () => {

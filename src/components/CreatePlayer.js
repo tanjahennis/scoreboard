@@ -8,9 +8,11 @@ export class CreatePlayer extends Component {
     event.preventDefault()
 
     const { addPlayer } = this.props
-    const name = this.refs.name.value
+    let name = this.refs.name.value
 
     addPlayer(name)
+
+    this.refs.name.value = null
   }
 
   render() {
