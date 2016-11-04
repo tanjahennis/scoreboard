@@ -47,7 +47,7 @@ describe('<Scoreboard />', () => {
     expect(scoreboard).to.have.exactly(2).descendants(Player)
   })
 
-  it('calls appLoading twice', () => {
+  it('calls appLoading', () => {
     expect(appLoading).to.have.been.called.with(true)
   })
 })
